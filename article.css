@@ -1,0 +1,118 @@
+/*
+	http://guidedulyceen.toile-libre.org
+	Version 1.1.0
+	Design by Antonin Décimo
+*/
+
+
+
+/* POLICES */
+
+@font-face {
+	font-family: 'TravelingTypewriter';
+	src: url('polices/TravelingTypewriter.ttf');
+}
+
+/* ELEMENTS DE TEXTE */
+
+/* Classes de formatage du texte */
+
+.family_name {
+	font-variant: small-caps;
+}
+.code {
+	font-family: 'Courier New';
+	font-size: 14px;
+}
+.extern_link:hover {
+	color: grey;
+}
+.article_link:hover {
+	color: green;
+}
+.page_link:hover {
+	color: red;
+}
+.warning {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.hide {
+	height: 10px;
+	overflow: hidden;
+}
+.hide:hover {
+	height: auto;
+	overflow: auto;
+}
+
+/* BALISES */
+/* Liens <a> */
+article a:visited {
+	text-decoration: none;
+	color: purple;
+}
+
+/* Pargraphes : <p> */
+article p {
+	font-family: 'Times';
+	font-size: 16px;
+	text-align: justify;	
+	padding: 0px;
+	margin: 0px;
+}
+
+/* Titres : <h1>, <h2>, <h3>, <h4>, <h5>, <h6> */
+article h1, article h2, article h3, article h4, article h5, article h6 {
+	font-family: 'TravelingTypewriter';
+	font-weight: normal;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-shadow: 2px 2px 4px black;
+}
+article h1 {
+	display: inline-block;
+	width: auto;
+	font-size: 23px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+article h2 {
+	font-size: 20px;
+	padding-left: 12px;
+	margin-top: 5px;
+}
+article h3 {
+	font-size: 18px;
+	padding-left: 10px;
+	margin-top: 5px;
+}
+article h4 {
+	font-size: 17px;
+	padding-left: 8px;
+	margin-top: 5px;
+}
+article h5 {
+	font-size: 16px;
+	padding-left: 6px;
+	margin-top: 5px;
+}
+article h6 {
+	font-size: 15px;
+	padding-left: 4px;
+	margin-top: 5px;
+}
+
+/* Listes <ul> */
+article ul {
+	list-style: outside square;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+/* Facebook */
+article div[class="fb-like"] {
+	display: inline-block;
+}

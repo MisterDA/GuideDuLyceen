@@ -1,0 +1,2 @@
+ErrorDocument 404 http://guide-du-lyceen.toile-libre.org/404.php
+DirectoryIndex index.php
