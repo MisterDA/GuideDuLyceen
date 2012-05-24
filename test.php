@@ -1,11 +1,14 @@
 <?php
     session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8" />
+	<meta charset="utf-8" />
 </head>
+
 <body>
     <?php
         foreach ($_SESSION as $key => $var) {
@@ -17,4 +20,5 @@
         }
     ?>
 </body>
+
 </html>

@@ -1,8 +1,5 @@
 <?php    
     session_start();
-    if (!isset($_SESSION['isConnected'])) {
-        $_SESSION['isConnected'] = false;
-    }
 ?>
 
 <!DOCTYPE html>
@@ -10,14 +7,14 @@
 
 <head>
 	<meta charset="utf-8"/>
-	<meta name="author" content="Jean Brero, Antonin Décimo, Léna Dumortier, Dimitri Kaskassiades, Antoine Lagarde, Rébecca Taillia, Jonathan Weingarten"/>
+	<meta name="author" content="Jean Brero, Antonin Décimo, Léna Dumortier, Dimitri Kaskassiades, Antoine Lagarde, Rébecca Taillia"/>
 	<meta name="description" content="Si toi aussi, tu t'es senti un peu perdu en arrivant en seconde ou plus tard au lycée Charlemagne, ou si tu vas y rentrer très prochainement, alors ce site est fait pour toi ! Nous y avons consigné les conseils les plus utiles de mémoire d'élève pour t'aider à bien débuter une nouvelle excellente année !" />
 	<link rel="stylesheet" type="text/css" href="global.css" />
 	<link rel="stylesheet" type="text/css" href="article.css" />
 	<title>Articles</title>
 </head>
 
-<body lang="FR">
+<body>
 
 	<div id="main_wrapper">
 	
@@ -34,16 +31,12 @@
                 <li><a href="infos.php">Infos utiles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
-                <li>
-                    <?php
-                        if ($_SESSION['isConnected']) {
-                            echo "<a href=\"connexion.php?lougout=1\">Deconnexion</a>";
-                        }
-                        else {
-                            echo "<a href=\"connexion.php?login=1\">Connexion</a>";
-                        }
-                        ?>
-                </li>
+				<li><?php
+						if (isset($_SESSION['username']))
+							echo "<a href=\"connexion.php?lougout=1\">Deconnexion</a>";
+						else
+							echo "<a href=\"connexion.php?login=1\">Connexion</a>";
+				?></li>
 			</ul>
 		</nav>
 	</header>
@@ -69,7 +62,6 @@
 			
 			<?php ?>
 			
-			
         </article>
 
 	</section>
@@ -78,15 +70,12 @@
 	
 	<footer>
 		<p><a href="#main_wrapper">Haut de page</a> 
-        <?php 
-            if ($_SESSION['isConnected']) {
-            	echo " | ";
-                echo htmlspecialchars($_SESSION['name']);
-                echo " est connecté.";
-            }
-        ?>
+		<?php 
+			if (isset($_SESSION['username']))
+				echo ' | ' .  htmlspecialchars($_SESSION['username']) . ' est connecté. ';
+		?>
         </p>
-		<p id="credits" class="family_name">j. brero, a. décimo, l. dumortier, d. kaskassiades, a. lagarde, r. taillia, j. weingarten</p>
+		<p id="credits" class="family_name">j. brero, a. décimo, l. dumortier, d. kaskassiades, a. lagarde, r. taillia</p>
 	</footer>
 	
 	</div>
