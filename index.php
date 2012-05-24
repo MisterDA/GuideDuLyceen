@@ -3,25 +3,22 @@
     if (isset($_GET['eraseSession']) AND $_GET['eraseSession']) {
         $_SESSION = array();
     }
-    if (!isset($_SESSION['isConnected'])) {
-        $_SESSION['isConnected'] = false;
-    }
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8"/>
-        <meta name="author" content="Jean Brero, Antonin Décimo, Léna Dumortier, Dimitri Kaskassiades, Antoine Lagarde, Rébecca Taillia, Jonathan Weingarten"/>
+        <meta name="author" content="Jean Brero, Antonin Décimo, Léna Dumortier, Dimitri Kaskassiades, Antoine Lagarde, Rébecca Taillia"/>
         <meta name="description" content="Si toi aussi, tu t'es senti un peu perdu en arrivant en seconde ou plus tard au lycée Charlemagne, ou si tu vas y rentrer très prochainement, alors ce site est fait pour toi ! Nous y avons consigné les conseils les plus utiles de mémoire d'élève pour t'aider à bien débuter une nouvelle excellente année !" />
-        <link rel="stylesheet" type="text/css" href="global.css" />
+	<link rel="stylesheet" type="text/css" href="global.css" />
         <link rel="stylesheet" type="text/css" href="article.css" />
-        <title>Accueil</title>
+        <title>Accueil : Guide du Lycéen au lycéen Charlemagne, présentation du lycée et du site, conseils, ...</title>
     </head>
     
     <!-- http://guidedulyceen.toile-libre.org -->
-    <!-- Design by Antonin Décimo -->
-    <!-- Version 2.0.0 -->
+    <!-- Design & Code by me -->
+    <!-- Version 2.0.1 -->
     
     <body>
         
@@ -53,12 +50,10 @@
                         <li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
                         <li>
                             <?php
-                                if ($_SESSION['isConnected']) {
+                                if (isset($_SESSION['username']))
                                     echo "<a href=\"connexion.php?lougout=1\">Deconnexion</a>";
-                                }
-                                else {
+                                else
                                     echo "<a href=\"connexion.php?login=1\">Connexion</a>";
-                                }
                             ?>
                         </li>
                     </ul>
@@ -106,7 +101,7 @@
                     </ul>
                     <h2>Développement</h2>
                     <p>
-                    Le site est actuellement en développement. Par conséquent, les utilisateurs ne peuvent ni lire des articles ni poster des commentaires, ni s'inscrire.<br />
+                    Le site est actuellement en développement. Par conséquent, les utilisateurs ne peuvent ni lire des articles ni poster des commentaires, ni s'inscrire. Si vous voulez participer au développement du projet, passez voir notre projet Github : <a href=\"https://github.com/MisterDA/GuideDuLyceen\" class=\"extern_link\">GuideDuLyceen</a>.<br />
                     Les bogues actuellement connus:
                     </p>
                     <ul>
@@ -120,13 +115,10 @@
             <div id="saut_section"></div>
             
             <footer>
-                <p><a href="#main_wrapper">Haut de page</a> | Version 2.0.0 | <a href="admin/articles.php">Admin</a> | <a href="changelog.php">Changelog</a>
+                <p><a href="#main_wrapper">Haut de page</a> | Version 2.0.1 | <a href="admin/articles.php">Admin</a> | <a href="changelog.php">Changelog</a>
                 <?php 
-                    if ($_SESSION['isConnected']) {
-                        echo " | ";
-                        echo htmlspecialchars($_SESSION['name']);
-                        echo " est connecté. ";
-                    }
+                    if (isset($_SESSION['username']))
+                        echo ' | ' .  htmlspecialchars($_SESSION['username']) . ' est connecté. ';
                 ?>
                 | <a href="index.php?eraseSession=true">Effacer la session</a> | <a href="test.php">Test</a>
                 </p>
