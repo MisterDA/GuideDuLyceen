@@ -1,71 +1,58 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8" />
-<link rel="stylesheet" href="global.css" />
-<link rel="stylesheet" href="articles.css" />
-</head>
-<body>
-
-	<article id="proposer_article" class="article">
-		<h1>Proposer un article</h1>
-			<p>
-				Vous vous sentez l'âme d'un rédacteur ? Vous voulez contribuer à l'aide des nouveaux lycéens ? Ou aider à l'essor du site ?<br />Alors écrivez et envoyez-nous un article, des suggestions ou des idées !
-			</p>
-			<h2>L'idée</h2>
-				<p>
-					Toutes les idées et thèmes sont bienvenus. Cela peut-être un thème sur un sujet qui va aider les lycéens, ou alors un compte rendu d'un évènement comme par exemple le Gala Dance ou le Carnaval.
-				</p>
-			<h2>L'écriture</h2>
-				<p>
-					Bien sûr, nous demandons que les articles soient écrits en bon français, et signés (nom ou pseudonyme). La mise en page est libre, mais pour assurer la cohérence les formats de titre, de textes sont imposés.</br>
-					Pour afficher vos articles directement dans le site, il faut qu'ils soient rédigés en HTML5 et en CSS3, ce qui peut représenter une certaine difficulté. Nous n'allons pas nous amuser à réécrire tous les articles pour se conformer au style du site. Nous vous demandons donc de rédiger vos articles en HTML, ou alors de nous fournir un PDF conforme aux règles de format si dessous.
-				</p>
-			<h2>Format de l'écriture</h2>
-				<p>
-					Plusieurs exigences sont retenues :
-					<ul>
-						<li>Encodage en UTF-8 (par défaut sur la plupart des éditeurs de texte).</li>
-						<li>Ecriture en HTML5 et CCS3. D'autres langages ou fichiers ne sont pas autorisés.</li>
-						<li>Tous les fichiers externes, CSS, images, sons, etc seront stockés dans le dossier <span class="code">./articles/NomDeVotreArticle/</span>.</li>
-                        <li>Tous les scripts PHP/MySQL, JavaScript, Ajax, etc seront automatiquement supprimés ! (Bande de malins)</li>
-						<li>Utiliser au maximum les balises HTML5 simples, pas de &lt;div&gt; à profusion.</li>
-						<li>Si vous voulez insérer des images ou des vidéos, vous pouvez placer ces fichiers dans un dossier à part, ou alors les liers directement depuis une autre page web. Vous pouvez récupérer les liens Facebook, Youtube, Dailymotion, etc...</li>
-						<li>Pagination, identation claire, voir commentaires dans vos fichiers.</li>
-						<li>Pensez que certains caractères ne s'afficheront pas comme &lt; et &gt;, il faudra écrire <span class="code">&amp;lt;</span> et <span class="code">&amp;gt;</span>.</li>
-						<li>Il est inutile d'inclure les en-têtes HTML dans votre page, commencez directement par la balise &lt;h1&gt;.</li>
-					</ul>
-					Liste des classes de texte proposées : (il vous faudra utiliser les balises <span class="code">&lt;span class="class"&gt;&lt;/span&gt;</span> ou les balises paragraphes)
-					<ul>
-						<li>.family_name : <span class="family_name">antonin decimo</span></li>
-						<li>.code : <span class="code">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</span></li>
-						<li>.hide : <span class="hide">Survolez avec votre souris ce très long texte qui saoûle tout le monde et qui n'a vraiment pas besoin d'être lu à moins de le préciser très fort, d'ailleurs moi ça m'énerve de l'écrire, c'est vraiment impossible. Je pense que vous avez dû comprendre.</span></li>
-                        <li>.title : <span class="title">Titre</span>. Balise à utiliser si vous ne prenez pas les &lt;h1&gt;, etc...</li>
-					</ul>
-					Liste des classes de balises proposées :
-					<ul>
-						<li>.extern_link : lien hypertexte extérieur au site : <a href="http://www.google.com" class="extern_link">www.google.com</a></li>
-						<li>.article_link : lien hypertexte vers un article du site : <a href="#" class="article_link">Article</a></li>
-                        <li>.page_link : lien hypertexte vers une page du site : <a href="changelog.php">changelog.php</a></li>
-					</ul>
-					Liste des balises automatiquement stylisées :
-					<ul>
-						<li>Toutes les balises de titre seront automatiquement stylisées</li>
-						<li>Le texte dans les balises de paragraphe sera automatiquement justifié</li>
-					</ul>
-                    Polices :
-                    <ul>
-                        <li>La police par défaut est la 'Times'.</li>
-                        <li>La police pour les titres est '<span class="title">TravelingTypewriter</span>'. Elles est formatée par défaut, mais vous pouvez l'utiliser pour vos propores titres avec la classe .title .</li>
-                    </ul>
-				</p>
-			<h2>Envoyer l'article</h2>
-				<p>
-					L'ajout des articles en ligne n'est pour le moment pas encore fonctionnel. Veuillez patienter !
-				</p>
+<h1>Proposer un article</h1>
+	<p>
+		Vous vous sentez l\'âme d\'un rédacteur ? Vous voulez contribuer à l\'aide des nouveaux lycéens ? Ou aider à l\'essor du site ?<br />Alors écrivez et envoyez-nous un article, des suggestions ou des idées !
+	</p>
+	<h2>L\'idée</h2>
 		<p>
-			Merci ! Nous attendons avec impatience vos articles, suggestions et encouragements !
+			Toutes les idées et thèmes sont bienvenus. Cela peut-être un thème sur un sujet qui va aider les lycéens, ou alors un compte rendu d\'un évènement comme par exemple le Gala Dance ou le Carnaval.
 		</p>
-
-
-</body>
+	<h2>L\'écriture</h2>
+		<p>
+			Bien sûr, nous demandons que les articles soient écrits en bon français, et signés (nom ou pseudonyme). La mise en page est libre, mais pour assurer la cohérence les formats de titre, de textes sont imposés.</br>
+			Pour afficher vos articles directement dans le site, il faut qu\'ils soient rédigés en HTML5 et en CSS3, ce qui peut représenter une certaine difficulté. Nous n\'allons pas nous amuser à réécrire tous les articles pour se conformer au style du site. Nous vous demandons donc de rédiger vos articles en HTML, ou alors de nous fournir un PDF conforme aux règles de format si dessous.
+		</p>
+	<h2>Format de l\'écriture</h2>
+		<p>
+			Plusieurs exigences sont retenues :
+			<ul>
+				<li>Encodage en UTF-8 (par défaut sur la plupart des éditeurs de texte).</li>
+				<li>Ecriture en HTML5 et CCS3. D\'autres langages ou fichiers ne sont pas autorisés.</li>
+				<li>Tous les fichiers externes, CSS, images, sons, etc seront stockés dans le dossier <span class="code">./articles/NomDeVotreArticle/</span>.</li>
+                 <li>Tous les scripts PHP/MySQL, JavaScript, Ajax, etc seront automatiquement supprimés ! (Bande de malins)</li>
+				<li>Utiliser au maximum les balises HTML5 simples, pas de &lt;div&gt; à profusion.</li>
+				<li>Si vous voulez insérer des images ou des vidéos, vous pouvez placer ces fichiers dans un dossier à part, ou alors les liers directement depuis une autre page web. Vous pouvez récupérer les liens Facebook, Youtube, Dailymotion, etc...</li>
+				<li>Pagination, identation claire, voir commentaires dans vos fichiers.</li>
+				<li>Pensez que certains caractères ne s\'afficheront pas comme &lt; et &gt;, il faudra écrire <span class="code">&amp;lt;</span> et <span class="code">&amp;gt;</span>.</li>
+				<li>Il est inutile d\'inclure les en-têtes HTML dans votre page, commencez directement par la balise &lt;h1&gt;.</li>
+			</ul>
+			Liste des classes de texte proposées : (il vous faudra utiliser les balises <span class="code">&lt;span class="class"&gt;&lt;/span&gt;</span> ou les balises paragraphes)
+			<ul>
+				<li>.family_name : <span class="family_name">antonin decimo</span></li>
+				<li>.code : <span class="code">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</span></li>
+				<li>.hide : <span class="hide">Survolez avec votre souris ce très long texte qui saoûle tout le monde et qui n\'a vraiment pas besoin d\'être lu à moins de le préciser très fort, d\'ailleurs moi ça m\'énerve de l\'écrire, c\'est vraiment impossible. Je pense que vous avez dû comprendre.</span></li>
+                 <li>.title : <span class="title">Titre</span>. Balise à utiliser si vous ne prenez pas les &lt;h1&gt;, etc...</li>
+			</ul>
+			Liste des classes de balises proposées :
+			<ul>
+				<li>.extern_link : lien hypertexte extérieur au site : <a href="http://www.google.com" class="extern_link">www.google.com</a></li>
+				<li>.article_link : lien hypertexte vers un article du site : <a href="#" class="article_link">Article</a></li>
+                 <li>.page_link : lien hypertexte vers une page du site : <a href="changelog.php">changelog.php</a></li>
+			</ul>
+			Liste des balises automatiquement stylisées :
+			<ul>
+				<li>Toutes les balises de titre seront automatiquement stylisées</li>
+				<li>Le texte dans les balises de paragraphe sera automatiquement justifié</li>
+			</ul>
+             Polices :
+             <ul>
+                 <li>La police par défaut est la \'Times\'.</li>
+                 <li>La police pour les titres est \'<span class="title">TravelingTypewriter</span>\'. Elles est formatée par défaut, mais vous pouvez l\'utiliser pour vos propores titres avec la classe .title .</li>
+             </ul>
+		</p>
+	<h2>Envoyer l\'article</h2>
+		<p>
+			L\'ajout des articles en ligne n\'est pour le moment pas encore fonctionnel. Veuillez patienter !
+		</p>
+<p>
+	Merci ! Nous attendons avec impatience vos articles, suggestions et encouragements !
+</p>
