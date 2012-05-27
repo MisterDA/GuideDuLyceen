@@ -1,5 +1,5 @@
-<?php    
-    session_start();
+<?php
+	session_start();
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +26,9 @@
 		</div>
 		<nav>
 			<ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="articles.php">Articles</a></li>
-                <li><a href="infos.php">Infos utiles</a></li>
+				<li><a href="index.php">Accueil</a></li>
+				<li><a href="articles.php">Articles</a></li>
+				<li><a href="infos.php">Infos utiles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
 				<li><?php
@@ -50,19 +50,26 @@
 					<a href="articles.php?id=3">Article 2</a><br />
 					<a href="articles.php?id=4">Article 3</a><br />
 				</p>
-            <h3>Liens utiles</h3>
+			<h3>Liens utiles</h3>
 				<p>
 					<a href="#">Un lien...</a><br />
 					<a href="#">Un lien...</a><br />
 					<a href="#">Un lien...</a><br />
 				</p>
-		</aside>	
-	
+		</aside>
+		
+		<nav>
+			<p>
+				<a href="#" class="article_link">&lt;-- Article précédent</a>
+				<a href="#" class="article_link">Article suivant --&gt;</a>
+			</p>
+		</nav>
+		
 		<article>
 			
 			<?php ?>
 			
-        </article>
+		</article>
 
 	</section>
 	
@@ -72,9 +79,9 @@
 		<p><a href="#main_wrapper">Haut de page</a> 
 		<?php 
 			if (isset($_SESSION['username']))
-				echo ' | ' .  htmlspecialchars($_SESSION['username']) . ' est connecté. ';
+				echo ' | ' . htmlspecialchars($_SESSION['username']) . ' est connecté. ';
 		?>
-        </p>
+		</p>
 		<p id="credits" class="family_name">j. brero, a. décimo, l. dumortier, d. kaskassiades, a. lagarde, r. taillia</p>
 	</footer>
 	
