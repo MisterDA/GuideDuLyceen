@@ -11,13 +11,11 @@
 
 <body>
     <?php
-        foreach ($_SESSION as $key => $var) {
-        	echo '[\'' . $key . '\'] = ' . $var . '<br />';
+        if (isset($_GET['article'])) {
+            echo '$_GET[\'article\'] = \'' . $_GET['article'] . '\'';
         }
-        $arr = $_SESSION['userNames'];
-        for ($i=0; $i<3; $i++) {
-        	echo $arr[$i];
-        }
+        else
+            echo 'N\'est pas défini.';
     ?>
 </body>
 
