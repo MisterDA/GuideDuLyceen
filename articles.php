@@ -8,18 +8,32 @@
 	catch (Exception $e) {
 		die('Erreur : ' . $e->getMessage());
 	}
-	
-	if (isset($_GET['article']) {
-		$titlesInBDD = $bdd->query('SELECT title FROM article');
-		while ($title = $titlesInBDD->fetch()) {
-			$title = mb_strtolower(str_replace(' ', '-', $title));
-			if ($title == $_GET['article']) {
-				
-		$req = $bdd->prepare('SELECT id, author,  FROM jeux_video WHERE possesseur = :possesseur AND prix <= :prixmax');
-		$req->execute(array('possesseur' => $_GET['possesseur'], 'prixmax' => $_GET['prix_max']));
-		
-?>
+    
+    if (isset($_GET['article'])) {
+        $titlesInBDD = $bdd->query('SELECT title FROM article');        
+        while ($title = $titlesInBDD->fetch) {
+            $title = mb_strtolower(str_replace(' ', '-', $title));
+            if ($title == $_GET['article']) {
+                $printLastArticle = false;
+                goto endArticleWhile;
+            }
+            else {
+                $printLastArticle = true;
+            }
+        }
+        endArticleWhile:
+        $titlesInBDD->closeCursor();
+    }
+    else {
+        $printLastArticle = true;
+    }
+    $article = $bdd->prepare('SELECT id, author, datePublishment, text FROM article WHERE title = :title');
+    $article->execute(array('title' => $title));
+    $current = $article->fetch();
+    $article->closeCursor();
 
+			
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
