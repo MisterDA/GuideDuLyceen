@@ -1,5 +1,23 @@
 <?php
 	session_start();
+	
+	try {
+		$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+		$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '', $pdo_options);
+	}
+	catch (Exception $e) {
+		die('Erreur : ' . $e->getMessage());
+	}
+	
+	if (isset($_GET['article']) {
+		$titlesInBDD = $bdd->query('SELECT title FROM article');
+		while ($title = $titlesInBDD->fetch()) {
+			$title = mb_strtolower(str_replace(' ', '-', $title));
+			if ($title == $_GET['article']) {
+				
+		$req = $bdd->prepare('SELECT id, author,  FROM jeux_video WHERE possesseur = :possesseur AND prix <= :prixmax');
+		$req->execute(array('possesseur' => $_GET['possesseur'], 'prixmax' => $_GET['prix_max']));
+		
 ?>
 
 <!DOCTYPE html>
