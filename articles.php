@@ -131,12 +131,6 @@
         			$linksInBDD->closeCursor();
         		?>
 				</p>
-			<h3>Liens utiles</h3>
-				<p>
-					<a href="#">Un lien...</a><br />
-					<a href="#">Un lien...</a><br />
-					<a href="#">Un lien...</a><br />
-				</p>
 		</aside>
 		
 		<article>
