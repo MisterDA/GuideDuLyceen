@@ -60,12 +60,17 @@ body {
 	font-family: 'Times';
 }
 
+hr {
+	width: 1000px;
+	height: 5px;
+	background: url('images/Separateur_horizontal.png') repeat-x bottom;
+	margin 0px;
+}
+
 /* HEADER */
 
 #main_title {
-	background: url('images/Separateur_horizontal.png') repeat-x bottom;
 	padding: 0px 0px;
-	padding-bottom: 10px;
 	margin: 0px 0px;
 	width: 1000px;
 }
@@ -101,7 +106,6 @@ header span:hover {
 
 header nav {
 	display: block;
-	background: url('images/Separateur_horizontal.png') repeat-x bottom;
 	margin: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -189,16 +193,6 @@ section aside p {
 	text-align: left;
 	font-size: medium;
 	margin-top: 4px;
-}
-
-
-
-/* SAUT SECTION */
-
-#saut_section {
-	background: url('images/Separateur_horizontal.png') repeat-x;
-	width: 1000px;
-	height: 5px;
 }
 
 /* FOOTER */

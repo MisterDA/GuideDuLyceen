@@ -23,6 +23,7 @@
 			<img src="images/Logo.png" alt="Logo du site" id="logo" />
 			<h1>Guide  du  Lyceen</h1>
 			<h2><span>Accueil</span></h2>
+			<hr />
 		</div>
 		<nav>
 			<ul>
@@ -38,6 +39,7 @@
 							echo "<a href=\"connexion.php?login=1\">Connexion</a>";
 				?></li>
 			</ul>
+			<hr />
 		</nav>
 	</header>
 	
@@ -68,7 +70,7 @@
 
 	</section>
 	
-	<div id="saut_section"></div>
+	<hr />
 	
 	<footer>
 		<p><a href="#main_wrapper">Haut de page</a> 
