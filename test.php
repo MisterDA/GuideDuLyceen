@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $a = 1;
+    echo $a;
 ?>
 
 <!DOCTYPE html>
@@ -11,11 +13,11 @@
 
 <body>
     <?php
-        if (isset($_GET['article'])) {
-            echo '$_GET[\'article\'] = \'' . $_GET['article'] . '\'';
+        echo $a;
+        if (1) {
+        	$b = 2;
         }
-        else
-            echo 'N\'est pas défini.';
+        echo $b;
     ?>
 </body>
 
