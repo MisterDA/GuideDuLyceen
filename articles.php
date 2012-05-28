@@ -8,30 +8,62 @@
 	catch (Exception $e) {
 		die('Erreur : ' . $e->getMessage());
 	}
-    
-    if (isset($_GET['article'])) {
-        $titlesInBDD = $bdd->query('SELECT title FROM article');        
-        while ($title = $titlesInBDD->fetch) {
-            $title = mb_strtolower(str_replace(' ', '-', $title));
-            if ($title == $_GET['article']) {
-                $printLastArticle = false;
-                goto endArticleWhile;
-            }
-            else {
-                $printLastArticle = true;
-            }
-        }
-        endArticleWhile:
-        $titlesInBDD->closeCursor();
-    }
-    else {
-        $printLastArticle = true;
-    }
-    $article = $bdd->prepare('SELECT id, author, datePublishment, text FROM article WHERE title = :title');
-    $article->execute(array('title' => $title));
-    $current = $article->fetch();
-    $article->closeCursor();
-
+	
+	if (isset($_GET['article'])) {
+		$linksInBDD = $bdd->query('SELECT link FROM article');		
+		while ($link = $linksInBDD->fetch) {
+			if ($link == $_GET['article']) {
+				$printLastArticle = false;
+				goto endArticleWhile;
+			}
+			else {
+				$printLastArticle = true;
+			}
+		}
+		endArticleWhile:
+		$linksInBDD->closeCursor();
+	}
+	else {
+		$printLastArticle = true;
+	}
+	if (!$printLastArticle) {
+		$maxIdBDD = $bdd->query('SELECT MAX(id) FROM article');
+		$maxId = $maxIdBDD->fetch();
+		$maxIdBDD->closeCursor();
+		$article = $bdd->prepare('SELECT id, title, author, datePublishment, text FROM article WHERE link = :link');
+		$article->execute(array('link' => $_GET['article']));
+		$current = $article->fetch();
+		$article->closeCursor();
+		if ($maxId['id'] == $current['id']) {
+			$before = $bdd->prepare('SELECT link FROM article WHERE id = :id');
+			$before->execute(array('id' => $current['id'] - 1));
+			$beforeLink = $before->fetch();
+			$before->closeCursor();
+		}
+		else {
+			$before = $bdd->prepare('SELECT link FROM article WHERE id = :id');
+			$before->execute(array('id' => $current['id'] - 1));
+			$beforeLink = $before->fetch();
+			$before->closeCursor();
+			$after = $bdd->prepare('SELECT link FROM article WHERE id = :id');
+			$after->execute(array('id' => $current['id'] + 1));
+			$afterLink = $after->fetch();
+			$after->closeCursor();
+		}
+	}
+	else {
+		$maxIdBDD = $bdd->query('SELECT MAX(id) FROM article');
+		$maxId = $maxIdBDD->fetch();
+		$maxIdBDD->closeCursor();
+		$article = $bdd->prepare('SELECT id, title, author, datePublishment, text FROM article WHERE id = :id');
+		$article->execute(array('id' => $maxId['id']));
+		$current = $article->fetch();
+		$article->closeCursor();
+		$before = $bdd->prepare('SELECT link FROM article WHERE id = :id');
+		$before->execute(array('id' => $current['id'] - 1));
+		$beforeLink = $before->fetch();
+		$before->closeCursor();	
+	}
 			
 ?>
 <!DOCTYPE html>
@@ -91,10 +123,16 @@
 		</aside>
 		
 		<nav>
-			<p>
-				<a href="#" class="article_link">&lt;-- Article précédent</a>
-				<a href="#" class="article_link">Article suivant --&gt;</a>
-			</p>
+			<p><?php
+				if (current['id'] != 1)
+					echo '<a href="articles.php?article=' . $beforeLink['link'] . '" class="article_link">$lt-- Article précédent</a>';
+				else
+					echo '<a href="#" class="unactive_link">Premier article</a>';
+				if (current['id'] != $maxId['id'])
+					echo '<a href="articles.php?article=' . $afterLink['link'] . '" class="article_link">Article suivant --&gt;</a>';
+				else
+					echo '<a href="#" class="unactive_link">Dernier article</a>';
+			?></p>
 		</nav>
 		
 		<article>
