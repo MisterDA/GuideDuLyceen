@@ -33,6 +33,10 @@
 .page_link:hover {
 	color: red;
 }
+.unactive_link:hover:visited:active:focus {
+	text-decoration: none;
+	color: grey;
+}
 .warning {
     color: red;
     font-weight: bold;
