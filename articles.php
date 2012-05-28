@@ -131,10 +131,6 @@
 				</p>
 		</aside>
 		
-		<nav>
-
-		</nav>
-		
 		<article>
 		<p><?php
 			if ($current['id'] == 1)
@@ -152,6 +148,19 @@
 			
 		?>
 		</article>
+		
+		<hr />
+		
+		<!--<div><?php
+			
+			$req = $bdd->query('SELECT * FROM commentaires');
+			$data = $req->fetch();
+				foreach ($data as $key => $var) {
+					echo '$data[\'' . $key . '\'] = ' . $var . '<br />';
+				}
+			$req->closeCursor();
+						
+		?></div>-->
 
 	</section>
 	
