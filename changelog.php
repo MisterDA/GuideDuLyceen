@@ -32,12 +32,6 @@
                 <li><a href="articles.php">Articles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
-				<li><?php
-						if (isset($_SESSION['username']))
-							echo "<a href=\"connexion.php?lougout=1\">Deconnexion</a>";
-						else
-							echo "<a href=\"connexion.php?login=1\">Connexion</a>";
-				?></li>
 			</ul>
 			<hr />
 		</nav>
@@ -173,12 +167,7 @@
 	<hr />
 	
 	<footer>
-		<p><a href="#main_wrapper">Haut de page</a> 
-		<?php 
-			if (isset($_SESSION['username']))
-				echo ' | ' .  htmlspecialchars($_SESSION['username']) . ' est connecté. ';
-		?>
-		</p>
+		<p><a href="#main_wrapper">Haut de page</a></p>
 		<p id="credits" class="family_name">j. brero, a. décimo, l. dumortier, d. kaskassiades, a. lagarde, r. taillia</p>
 	</footer>
 	

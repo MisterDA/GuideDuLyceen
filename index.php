@@ -23,16 +23,14 @@
 
 <body>
 	
-	<div id="fb-root"></div>
-	<script>
-		(function(d){
-		 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-		 if (d.getElementById(id)) {return;}
-		 js = d.createElement('script'); js.id = id; js.async = true;
-		 js.src = "//connect.facebook.net/en_US/all.js";
-		 ref.parentNode.insertBefore(js, ref);
-		 }(document));
-	</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	
 	<div id="main_wrapper">
 	
@@ -50,12 +48,6 @@
                 <li><a href="articles.php">Articles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
-				<li><?php
-						if (isset($_SESSION['username']))
-							echo "<a href=\"connexion.php?lougout=1\">Deconnexion</a>";
-						else
-							echo "<a href=\"connexion.php?login=1\">Connexion</a>";
-				?></li>
 			</ul>
 			<hr />
 		</nav>
@@ -120,13 +112,7 @@
 	<hr />
 	
 	<footer>
-		<p><a href="#main_wrapper">Haut de page</a> | Version 2.0.1 | <a href="admin/articles.php">Admin</a> | <a href="changelog.php">Changelog</a>
-		<?php 
-			if (isset($_SESSION['username']))
-				echo ' | ' .  htmlspecialchars($_SESSION['username']) . ' est connecté. ';
-		?>
-		| <a href="index.php?eraseSession=true">Effacer la session</a> | <a href="test.php">Test</a>
-		</p>
+		<p><a href="#main_wrapper">Haut de page</a> | Version 3.0.0 | <a href="apropos.php">A propos</a></p>
 		<p id="credits" class="family_name">j. brero, a. décimo, l. dumortier, d. kaskassiades, a. lagarde, r. taillia</p>
 	</footer>
 	
