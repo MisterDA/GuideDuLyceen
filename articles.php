@@ -153,16 +153,25 @@
 		
 		<hr />
 		
-		<!--<div><?php
-			
-			$req = $bdd->query('SELECT * FROM commentaires');
-			$data = $req->fetch();
-				foreach ($data as $key => $var) {
-					echo '$data[\'' . $key . '\'] = ' . $var . '<br />';
+		<div id="div_comments">
+			<?php
+				$commentsInBDD = $bdd->prepare('SELECT author, datePublishment, text FROM comments WHERE article = :article ORDER BY datePublishment DESC');
+				$commentsInBDD->execute(array('article' => $current['id']));
+				while ($comments = $commentsInBDD->fetch()) {
+					echo '<p>---- Par ' . $comments['author'] . ' --- ' . $comments['datePublishment'] . ' ----<br />--- ' . $comments['title'] . ' ---</p>' . $comments['text'];
 				}
-			$req->closeCursor();
-						
-		?></div>-->
+				$commentsInBDD->closeCursor();
+			?>
+			<form method="post" action="articles.php">
+				<p>
+				<input type="text" name="title" placeholder="Le titre de ton commentaire... (requis)" size="45" maxlength="15" required <?php if (!isset($_SESSION['username'])) echo "disabled"; ?> />
+				<textarea name="text" placeholder="Ton commentaire..." required <?php if (!isset($_SESSION['username'])) echo "disabled"; ?>></textarea>
+				<input type="submit" value="Poster" <?php if (!isset($_SESSION['username'])) echo "disabled"; ?> />
+				</p>
+			</form>
+			<?php if (!isset($_SESSION['username']))
+				echo "<p id=\"p_not_login\">Tu dois être connecté pour poster des commentaires.<br /><a href=\"user.php?login=1\" class=\"page_link\">Connecte-toi</a>, ou <a href=\"user.php?signup=1\" class=\"page_link\">inscris-toi</a>, ç'est gentil et ça ne prend qu'une minute !"; ?>
+		</div>
 
 	</section>
 	
