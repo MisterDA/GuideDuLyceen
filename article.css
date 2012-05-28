@@ -33,7 +33,7 @@
 .page_link:hover {
 	color: red;
 }
-.unactive_link:hover:visited:active:focus {
+.unactive_link {
 	text-decoration: none;
 	color: grey;
 }
@@ -43,7 +43,7 @@
     text-decoration: underline;
 }
 .hide {
-	height: 10px;
+	height: 5px;
 	overflow: hidden;
 }
 .hide:hover {
