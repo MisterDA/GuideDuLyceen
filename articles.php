@@ -124,11 +124,11 @@
 		
 		<nav>
 			<p><?php
-				if (current['id'] != 1)
+				if ($current['id'] != 1)
 					echo '<a href="articles.php?article=' . $beforeLink['link'] . '" class="article_link">$lt-- Article précédent</a>';
 				else
 					echo '<a href="#" class="unactive_link">Premier article</a>';
-				if (current['id'] != $maxId['id'])
+				if ($current['id'] != $maxId['id'])
 					echo '<a href="articles.php?article=' . $afterLink['link'] . '" class="article_link">Article suivant --&gt;</a>';
 				else
 					echo '<a href="#" class="unactive_link">Dernier article</a>';
