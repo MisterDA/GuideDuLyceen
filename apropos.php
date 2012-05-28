@@ -70,9 +70,7 @@
 			<h2 id="ajouts_prevus">Ajouts prévus</h2>
 				<ul>
 					<li>Ajouter de nouveaux articles et du contenu.</li>
-					<li>Ajouter un support Facebook ainsi que des boutons "j'aime".</li>
-					<li>Corriger tous les bogues de mise en page.</li>
-					<li>Corriger l'accès aux bases de données.</li>
+					<li>Proposer l'ajout en ligne des articles.</li>
 					<li>Créer un parseur BBCode ou XML pour éviter les failles XSS.</li>
 				</ul>
 			<h2 id="version">Autre</h2>
