@@ -27,8 +27,8 @@
 		<nav>
 			<ul>
 				<li><a href="index.php">Accueil</a></li>
-				<li><a href="articles.php">Articles</a></li>
-				<li><a href="infos.php">Infos utiles</a></li>
+                <li><a href="infos.php">Infos utiles</a></li>
+                <li><a href="articles.php">Articles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
 				<li><?php
