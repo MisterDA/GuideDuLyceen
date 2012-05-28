@@ -163,6 +163,11 @@ section article form p textarea {
 	height: 100px;
 }
 
+.article_author, .article_datePublishment {
+	display: inline-block;
+	color: grey;
+}
+
 section article iframe {
 	border-style: none;
 }
