@@ -128,21 +128,6 @@ header nav ul li a {
 
 /* SECTION */
 
-/* NAVIGATION */
-
-section nav p {
-	width: 835px;
-	margin-left: 150px;
-	padding-left: 15px;
-	padding-top: 15px;
-}
-section nav p a:nth-child(1) {
-	text-align: left;
-}
-section nav p a:nth-child(2) {
-	text-align: right;
-}
-
 /* ARTICLE */
 
 section article {
@@ -167,9 +152,23 @@ section article form p textarea {
 	display: inline-block;
 	color: grey;
 }
+#article_before {
+	width: 400px;
+	text-align: left;
+	display: inline-block;
+}
+#article_after {
+	width: 400px;
+	text-align: right;
+	display: inline-block;
+}
 
 section article iframe {
 	border-style: none;
+}
+section article img {
+	display: block;
+	margin: auto;
 }
 
 /* ASIDE */
