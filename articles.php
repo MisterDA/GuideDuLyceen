@@ -1,6 +1,4 @@
 <?php
-	session_start();
-	
 	try {
 		$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
 		$bdd = new PDO('mysql:host=sql.toile-libre.org;dbname=gdlc_oneofthem', 'gdlc_oneofthem', 'R2FZpw1F', $pdo_options);
@@ -8,7 +6,6 @@
 	catch (Exception $e) {
 		die('Erreur : ' . $e->getMessage());
 	}
-	
 	
 	$printArticle = false;
 	if (!isset($_GET['article'])) { // Si $_GET['article'] n'est pas défini
@@ -27,6 +24,7 @@
 				$printLastArticle = true;
 			}
 		}
+		$linksInBDD->closeCursor();
 	}	
 	
 	$maxIDBDD = $bdd->query('SELECT id FROM article ORDER BY id DESC LIMIT 0,1');
@@ -89,6 +87,15 @@
 
 <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 	<div id="main_wrapper">
 	
 	<header>
@@ -105,6 +112,7 @@
                 <li><a href="articles.php">Articles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
+				<li><div id="fb-login-button" class="fb-login-button" data-show-faces="false" data-width="100" data-max-rows="1"></div></li>
 			</ul>
 			<hr />
 		</nav>
@@ -115,9 +123,13 @@
 		<aside>
 			<h3>Articles</h3>
 				<p>
-					<a href="articles.php?id=1">Proposer un article</a><br />
-					<a href="articles.php?id=3">Article 2</a><br />
-					<a href="articles.php?id=4">Article 3</a><br />
+				<?php
+					$linksInBDD = $bdd->query('SELECT link, title FROM article ORDER BY datePublishment DESC');
+        			while ($link = $linksInBDD->fetch()) {
+                		 echo '<a href="articles.php?article=' . $link['link'] . '">' . $link['title'] . '</a><br />';
+                	}
+        			$linksInBDD->closeCursor();
+        		?>
 				</p>
 			<h3>Liens utiles</h3>
 				<p>
@@ -140,30 +152,17 @@
 		?></p>		
 		<?php
 			
-			echo '<h1>' . $current['title'] . '</h1><p class="article_author">Par ' . $current['author'] . ' </p><p class="article_datePublishment">, ' . $current['datePublishment'] . '</p>' . $current['text'];
+			echo '<h1>' . $current['title'] . '</h1><p class="infos_about_article"><span class="article_author">Par ' . $current['author'] . ',</span><span class="article_datePublishment"> ' . $current['datePublishment'] . '</span><div class="fb-like" data-href="http://guide-du-lyceen.toile-libre.org/' . $current['link'] . '" data-send="false" data-layout="button_count" data-width="150" data-show-faces="false"></div></p>' . $current['text'];
 			
 		?>
 		</article>
 		
 		<hr />
 		
-		<div id="div_comments">
-			<?php
-				$commentsInBDD = $bdd->prepare('SELECT author, datePublishment, text, title FROM comments WHERE article = :article ORDER BY datePublishment DESC');
-				$commentsInBDD->execute(array('article' => $current['id']));
-				while ($comments = $commentsInBDD->fetch()) {
-					echo '<div class="comment"> <p>---- Par ' . $comments['author'] . ' --- ' . $comments['datePublishment'] . ' ----<br />--- ' . $comments['title'] . ' ---</p>' . $comments['text'] . '</div>';
-				}
-				$commentsInBDD->closeCursor();
-			?>
-			<form method="post" action="articles.php">
-				<p>
-				<input type="text" name="title" placeholder="Le titre de ton commentaire... (requis)" size="45" maxlength="15" required />
-				<textarea name="text" placeholder="Ton commentaire..." required ></textarea>
-				<input type="submit" value="Poster" />
-				</p>
-			</form>
-		</div>
+		
+		<div id="fb-comments" class="fb-comments" data-href="http://guide-du-lyceen.toile-libre.org/articles.php?<?php echo $current['link'] ?>" data-num-posts="10" data-width="825"></div>
+		
+		
 
 	</section>
 	

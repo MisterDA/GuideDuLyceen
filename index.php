@@ -1,10 +1,3 @@
-<?php	
-	session_start();
-	if (isset($_GET['eraseSession']) AND $_GET['eraseSession']) {
-		$_SESSION = array();
-	}
-?>
-	
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -48,6 +41,7 @@
                 <li><a href="articles.php">Articles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
+				<li><div id="fb-login-button" class="fb-login-button" data-show-faces="false" data-width="100" data-max-rows="1"></div></li>
 			</ul>
 			<hr />
 		</nav>
@@ -58,21 +52,7 @@
 		<aside>
 			<h3>Articles</h3>
 				<p>
-					<a href="articles.php?id=1">Proposer un article</a><br />
-					<a href="articles.php?id=3">Article 2</a><br />
-					<a href="articles.php?id=4">Article 3</a><br /
-				</p>
-			<h3>Navigation</h3>
-				<p>
-					<a href="#">Une ancre...</a><br />
-					<a href="#">Une ancre...</a><br />
-					<a href="#bas_page">Bas de page</a><br />
-				</p>
-			<h3>Liens utiles</h3>
-				<p>
-					<a href="#">Un lien...</a><br />
-					<a href="#">Un lien...</a><br />
-					<a href="#">Un lien...</a><br />
+					<?php include("articles-menu.php"); ?>
 				</p>
 		</aside>
 		
@@ -93,17 +73,6 @@
 					<li>La <a href="infos.php" class="page_link">page des infos utiles</a>, où sont proposées une liste de questions-réponses d'aides et d'informations utiles à propos du lycée.</li>
 					<li>La <a href="articles.php" class="page_link">page des articles</a>, où sont référencés tous les articles écrits par nos rédacteurs, à propos des évènements ou de l'actualité autour du lycée, ou encore des fiches de conseils testés et éprouvés pour bien s'organiser et gérer ses cours.</li>
 				</ul>
-			<h2>Développement</h2>
-				<p>
-					Le site est actuellement en développement. Par conséquent, les utilisateurs ne peuvent ni lire des articles ni poster des commentaires, ni s'inscrire. Si vous voulez participer au développement du projet, passez voir notre projet Github : <a href=\"https://github.com/MisterDA/GuideDuLyceen\" class=\"extern_link\">GuideDuLyceen</a>.<br />
-					Les bogues actuellement connus:
-				</p>
-				<ul>
-					<li>L'inscription n'est pas possible à cause d'un problème avec reCaptcha et le proxy de notre hébergeur.</li>
-					<li>Des problèmes de mise en page apparaissent sur les articles.</li>
-					<li>Des coquilles apparaissent dans le volet de navigation à gauche.</li>
-				</ul>
-				</p>
 				
 		</article>
 		

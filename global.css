@@ -8,6 +8,121 @@
 
 /* ELEMENTS DE TEXTE */
 
+/* POLICES */
+
+@font-face {
+	font-family: 'TravelingTypewriter';
+	src: url('polices/TravelingTypewriter.ttf');
+}
+
+/* ELEMENTS DE TEXTE */
+
+/* Classes de formatage du texte */
+
+.family_name {
+	font-variant: small-caps;
+}
+.code {
+	font-family: 'Courier New';
+	font-size: 14px;
+}
+.extern_link:hover {
+	color: grey;
+}
+.article_link:hover {
+	color: green;
+}
+.page_link:hover {
+	color: red;
+}
+.unactive_link {
+	text-decoration: none;
+	color: grey;
+}
+.warning {
+    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+}
+.hide {
+	height: 5px;
+	overflow: hidden;
+}
+.hide:hover {
+	height: auto;
+	overflow: auto;
+}
+
+/* BALISES */
+/* Liens <a> */
+article a:visited {
+	text-decoration: none;
+	color: purple;
+}
+
+/* Pargraphes : <p> */
+article p {
+	font-family: 'Times';
+	font-size: 16px;
+	text-align: justify;	
+	padding: 0px;
+	margin: 0px;
+}
+
+/* Titres : <h1>, <h2>, <h3>, <h4>, <h5>, <h6> */
+article h1, article h2, article h3, article h4, article h5, article h6 {
+	font-family: 'TravelingTypewriter';
+	font-weight: normal;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-shadow: 2px 2px 4px black;
+}
+article h1 {
+	display: inline-block;
+	width: auto;
+	font-size: 23px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+article h2 {
+	font-size: 20px;
+	padding-left: 12px;
+	margin-top: 5px;
+}
+article h3 {
+	font-size: 18px;
+	padding-left: 10px;
+	margin-top: 5px;
+}
+article h4 {
+	font-size: 17px;
+	padding-left: 8px;
+	margin-top: 5px;
+}
+article h5 {
+	font-size: 16px;
+	padding-left: 6px;
+	margin-top: 5px;
+}
+article h6 {
+	font-size: 15px;
+	padding-left: 4px;
+	margin-top: 5px;
+}
+
+/* Listes <ul> */
+article ul {
+	list-style: outside square;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+/* Facebook */
+article div[class="fb-like"] {
+	display: inline-block;
+}
+
 a {
 	text-decoration: none;
 	color: black;
@@ -56,15 +171,16 @@ body {
 
 #main_wrapper {
 	margin: auto;
-	width: 1000px;
+	width: 1020px;
 	font-family: 'Times';
 }
 
 hr {
-	width: 1000px;
+	width: 1020px;
 	height: 5px;
 	background: url('images/Separateur_horizontal.png') repeat-x bottom;
-	margin 0px;
+	margin: 0px;
+	padding: 0px;
 }
 
 /* HEADER */
@@ -73,7 +189,7 @@ hr {
 	padding: 0px;
 	margin: 0px;
 	margin-bottom: 5px;
-	width: 1000px;
+	width: 1020px;
 }
 
 header img, header h1, header h2{
@@ -109,7 +225,7 @@ header nav {
 	display: block;
 	margin: 0px;
 	padding: 0px;
-	width: 1000px;
+	width: 1020px;
 }
 
 header nav ul {
@@ -122,6 +238,7 @@ header nav ul {
 header nav ul li {
 	display: inline-block;
 	margin-left: 20px;
+	vertical-align: middle;
 }
 
 header nav ul li a {
@@ -135,26 +252,20 @@ header nav ul li a {
 /* ARTICLE */
 
 section article {
-    width: 835px;
-	min-height: 215px;
-	margin-left: 150px;
-	padding-left: 15px;
+    width: 825px;
+	min-height: 250px;
+	margin-left: 195px;
 	padding-top: 15px;
 	padding-bottom: 15px;
     overflow: auto;
 }
 
-section article form p input, article form p textarea {
-	display: block;
-}
-section article form p textarea {
-	width: 450px;
-	height: 100px;
-}
-
 .article_author, .article_datePublishment {
-	display: inline-block;
 	color: grey;
+}
+.infos_about_article {
+	display: inline-block;
+	margin-right: 15px;
 }
 #article_before {
 	width: 400px;
@@ -175,27 +286,20 @@ section article img {
 	margin: auto;
 }
 
-/* COMMENTAIRES */
+/* FACEBOOK */
 
-form {
-	display: inline-block;
-	vertical-align: top;
-	margin-left: 165px;
+#fb-comments {
+	margin: 0px;
+	margin-left: 195px;
+	padding: 0px;
 }
-form textarea {
-	display: block;
-	width: 350px;
-	height: 50px;
+header nav ul li:last-child {
+	height: 29px;
 }
-#p_not_login {
-	display: inline-block;
-	overflow: auto;
-	vertical-align: top;
-	margin-left: 15px;
-	margin-top: 45px;
-}
-.comment {
-	margin-left: 165px;
+#fb-login-button {
+	margin: 0px;
+	padding: 0px;
+	padding-top: 1px;
 }
 
 /* ASIDE */
@@ -203,7 +307,7 @@ form textarea {
 section aside {
     background: url('images/Fond_aside.png');
     position: fixed;
-	width: 140px;
+	width: 170px;
 	margin: 0px 0px 0px 0px;
 	padding-left: 10px;
 }
@@ -226,7 +330,7 @@ footer p {
 }
 
 footer p:nth-child(1) {
-	width: 460px;
+	width: 590px;
 	margin-left: 15px;
 	text-align: left;
 	font-size: small;

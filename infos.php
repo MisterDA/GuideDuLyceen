@@ -27,6 +27,7 @@
                 <li><a href="articles.php">Articles</a></li>
 				<li><a href="http://www.lycee-charlemagne.fr/index.php" target="_blank" title="www.lycee-charlemagne.fr">Lycee</a></li>
 				<li><a href="https://www.viescolaire.net/accueil_0.aspx" target="_blank" title="www.viescolaire.net">Vie Scolaire</a></li>
+				<li><div id="fb-login-button" class="fb-login-button" data-show-faces="false" data-width="100" data-max-rows="1"></div></li>
 			</ul>
 			<hr />
 		</nav>
@@ -37,9 +38,7 @@
 		<aside>
 			<h3>Articles</h3>
 				<p>
-					<a href="articles.php?id=1">Proposer un article</a><br />
-					<a href="articles.php?id=3">Article 2</a><br />
-					<a href="articles.php?id=4">Article 3</a><br />
+					<?php include("articles-menu.php"); ?>
 				</p>
 			<h3>Navigation</h3>
 				<p>
@@ -51,12 +50,6 @@
 					<a href="#retard_abscence">Abscences</a><br />
 					<a href="#rejoindre_lycee">Rejoindre le Lycée</a><br />
 					<a href="#bas_page">Bas de page</a><br />
-				</p>
-			<h3>Liens utiles</h3>
-				<p>
-					<a href="#">Un lien...</a><br />
-					<a href="#">Un lien...</a><br />
-					<a href="#">Un lien...</a><br />
 				</p>
 		</aside>	
 	
