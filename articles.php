@@ -135,11 +135,11 @@
 			?></p>
 		</nav>
 		
-		<article>
+		<article><?php
 			
-			<?php ?>
+			echo '<h1>' . $current['title'] . '</h1><p class="article_author">Par ' . $current['author'] . ' </p><p class="article_datePublishment">le ' . $current['datePublishment'] . '</p>' . $current['text'];
 			
-		</article>
+		?></article>
 
 	</section>
 	
