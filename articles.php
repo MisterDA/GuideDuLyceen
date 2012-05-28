@@ -3,43 +3,55 @@
 	
 	try {
 		$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-		$bdd = new PDO('mysql:host=localhost;dbname=test', 'root', '', $pdo_options);
+		$bdd = new PDO('mysql:host=sql.toile-libre.org;dbname=gdlc_oneofthem', 'gdlc_oneofthem', 'R2FZpw1F', $pdo_options);
 	}
 	catch (Exception $e) {
 		die('Erreur : ' . $e->getMessage());
 	}
 	
-	if (isset($_GET['article'])) {
-		$linksInBDD = $bdd->query('SELECT link FROM article');		
-		while ($link = $linksInBDD->fetch) {
-			if ($link == $_GET['article']) {
-				$printLastArticle = false;
-				goto endArticleWhile;
+	
+	$printArticle = false;
+	if (!isset($_GET['article'])) { // Si $_GET['article'] n'est pas défini
+		$printLastArticle = true;
+	}
+	elseif ($_GET['article'] == NULL) { // Si $_GET['article'] ne vaut rien
+		$printLastArticle = true;
+	}
+	else {		
+		$linksInBDD = $bdd->query('SELECT link FROM article'); // Recherche des liens dans la BDD
+		while ($link = $linksInBDD->fetch()) {
+			if ($link['link'] == $_GET['article']) { 
+				$printArticle = true;
 			}
 			else {
 				$printLastArticle = true;
 			}
 		}
-		endArticleWhile:
-		$linksInBDD->closeCursor();
-	}
-	else {
-		$printLastArticle = true;
-	}
-	if (!$printLastArticle) {
-		$maxIdBDD = $bdd->query('SELECT MAX(id) FROM article');
-		$maxId = $maxIdBDD->fetch();
-		$maxIdBDD->closeCursor();
-		$article = $bdd->prepare('SELECT id, title, author, datePublishment, text FROM article WHERE link = :link');
+	}	
+	
+	$maxIDBDD = $bdd->query('SELECT id FROM article ORDER BY id DESC LIMIT 0,1');
+	$maxID = $maxIDBDD->fetch();
+	$maxIDBDD->closeCursor();	
+		
+	if ($printArticle) {
+		$article = $bdd->prepare('SELECT * FROM article WHERE link = :link');
 		$article->execute(array('link' => $_GET['article']));
 		$current = $article->fetch();
 		$article->closeCursor();
-		if ($maxId['id'] == $current['id']) {
+
+		
+		if ($maxID['id'] == $current['id']) {
 			$before = $bdd->prepare('SELECT link FROM article WHERE id = :id');
 			$before->execute(array('id' => $current['id'] - 1));
 			$beforeLink = $before->fetch();
 			$before->closeCursor();
 		}
+		elseif (1 == $current['id']) {
+			$after = $bdd->prepare('SELECT link FROM article WHERE id = :id');
+			$after->execute(array('id' => $current['id'] + 1));
+			$afterLink = $after->fetch();
+			$after->closeCursor();	
+		}	
 		else {
 			$before = $bdd->prepare('SELECT link FROM article WHERE id = :id');
 			$before->execute(array('id' => $current['id'] - 1));
@@ -51,12 +63,9 @@
 			$after->closeCursor();
 		}
 	}
-	else {
-		$maxIdBDD = $bdd->query('SELECT MAX(id) FROM article');
-		$maxId = $maxIdBDD->fetch();
-		$maxIdBDD->closeCursor();
-		$article = $bdd->prepare('SELECT id, title, author, datePublishment, text FROM article WHERE id = :id');
-		$article->execute(array('id' => $maxId['id']));
+	
+	if ($printLastArticle AND !$printArticle) {
+		$article = $bdd->query('SELECT * FROM article ORDER BY id DESC LIMIT 0,1');
 		$current = $article->fetch();
 		$article->closeCursor();
 		$before = $bdd->prepare('SELECT link FROM article WHERE id = :id');
@@ -123,23 +132,26 @@
 		</aside>
 		
 		<nav>
-			<p><?php
-				if ($current['id'] != 1)
-					echo '<a href="articles.php?article=' . $beforeLink['link'] . '" class="article_link">$lt-- Article précédent</a>';
-				else
-					echo '<a href="#" class="unactive_link">Premier article</a>';
-				if ($current['id'] != $maxId['id'])
-					echo '<a href="articles.php?article=' . $afterLink['link'] . '" class="article_link">Article suivant --&gt;</a>';
-				else
-					echo '<a href="#" class="unactive_link">Dernier article</a>';
-			?></p>
+
 		</nav>
 		
-		<article><?php
+		<article>
+		<p><?php
+			if ($current['id'] == 1)
+				echo '<a href="#" id="article_before" class="unactive_link">Premier article</a>';
+			else
+				echo '<a href="articles.php?article=' . $beforeLink['link'] . '" id="article_before" class="article_link">&lt;-- Article précédent</a>';					
+			if ($current['id'] == $maxID['id'])
+				echo '<a href="#" id="article_after" class="unactive_link">Dernier article</a>';
+			else
+				echo '<a href="articles.php?article=' . $afterLink['link'] . '" id="article_after" class="article_link">Article suivant --&gt;</a>';
+		?></p>		
+		<?php
 			
-			echo '<h1>' . $current['title'] . '</h1><p class="article_author">Par ' . $current['author'] . ' </p><p class="article_datePublishment">le ' . $current['datePublishment'] . '</p>' . $current['text'];
+			echo '<h1>' . $current['title'] . '</h1><p class="article_author">Par ' . $current['author'] . ' </p><p class="article_datePublishment">, ' . $current['datePublishment'] . '</p>' . $current['text'];
 			
-		?></article>
+		?>
+		</article>
 
 	</section>
 	
