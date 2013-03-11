@@ -61,7 +61,7 @@
 					<li><a href="https://www.viescolaire.net/accueil_0.aspx" class="extern_link">VieScolaire.net</a>, site où tu peux retrouver tes notes, tes moyennes, tes devoirs, ou encore justifier tes absences et tes retards.</li>
 					<li><a href="http://maps.google.fr/maps?hl=fr&amp;ll=48.85394,2.361251&amp;spn=0.002178,0.005659&amp;sll=48.854159,2.360221&amp;sspn=0.002333,0.005659&amp;t=h&amp;z=18" class="extern_link">Google Maps</a>, où nous avons préparés une vue aérienne du lycée.</li>
 					<li><a href="http://charlemagne.alwaysdata.net" class="extern_link">Autour du Lycée</a>, très bon site réalisé par d'autres élèves qui ont listés tous les commerces et endroits agréables autour du lycée.</li>
-					<li><a href="http://actchralo.blogspot.fr" class"extern_link">Activités à Charlemagne</a>, deuxième bon site où d'autres élèves vous parlent des activités du lycée.</li>
+					<li><a href="http://actchralo.blogspot.fr" class="extern_link">Activités à Charlemagne</a>, deuxième bon site où d'autres élèves vous parlent des activités du lycée.</li>
 				</ul>
 			<h2 id="emplacement_salles">J’arrive en cours pour la première fois, où est la salle 315 ?</h2>
 				<ul>
